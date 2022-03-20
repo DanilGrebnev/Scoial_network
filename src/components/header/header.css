@@ -1,0 +1,4 @@
+.header{
+    grid-area: h; /* будешь называться h */
+    background: green;
+   }

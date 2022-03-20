@@ -1,0 +1,13 @@
+.nav{
+    grid-area: n;
+    background: blueviolet;
+    display: flex;
+    flex-direction: column;
+    }
+
+    .item{
+        color:red;
+    }
+   .activeLink{
+       color: blue;
+   }
