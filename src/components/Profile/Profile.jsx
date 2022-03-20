@@ -1,16 +1,17 @@
 import Post from './Post/Post';
 import classes from './Profile.module.css';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
+import MyPosts from './ProfileInfo/MyPosts';
 
 
 
 
 
-function Profile({updateNewPostText, newPostText,posts, addPost}){
+
+function Profile(props){
 
 
 
-  const postsOut = posts.map(item => {
+  const postsOut = props.posts.map(item => {
     return <Post 
       key={item.id} 
       
@@ -22,7 +23,9 @@ function Profile({updateNewPostText, newPostText,posts, addPost}){
 
     return(
         <div >
-            <ProfileInfo updateNewPostText={updateNewPostText}  newPostText={newPostText} addPost={addPost} />
+            <MyPosts 
+            dispatch={props.dispatch}  
+            newPostText={props.newPostText} />
             <div className={classes.posts}>
             {postsOut}
             </div>

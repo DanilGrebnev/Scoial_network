@@ -6,25 +6,21 @@ import Profile from './components/Profile/Profile';
 import {Routes, Route} from "react-router-dom";
 
 
-
-
-
-
-const App = ({updateNewPostText, newPostText, posts, dialogsData, messagesData, addPost, }) => {
+const App = (props) => {
  return(
     <div className="app-wrapper">
           <Header />
           <NavBar />
         <div className='app-wrapper-content'>
           <Routes>
-            <Route path='/Profile/Profile/*' element={<Profile 
-              updateNewPostText={updateNewPostText} 
-              newPostText={newPostText} 
-              posts={posts} 
-              addPost={addPost}
+            <Route path='/Profile/Profile/*' element={
+            <Profile 
+              newPostText={props.newPostText} 
+              posts={props.posts} 
+              dispatch={props.dispatch}
               />}
             />
-            <Route  path='/Dialogs/Dialogs' element={<Dialogs dialogsData={dialogsData} messagesData={messagesData} />} />
+            <Route  path='/Dialogs/Dialogs' element={<Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData} />} />
           </Routes>
         </div>
     </div>

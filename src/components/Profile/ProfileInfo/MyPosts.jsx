@@ -1,20 +1,21 @@
 import React from 'react';
+import { updateNewPostActionCreator, addPostActionCreator } from '../../../redux/state';
 
-const ProfileInfo =({updateNewPostText, newPostText, addPost}) => {
+
+function MyPosts(props){
 
 
 let getAreaValue = React.createRef();
 
 function addNewPost(){
-  addPost();
+  props.dispatch(addPostActionCreator());
 }
 
 let onPostChange =() => {
-  let text = getAreaValue.current.value;
-  updateNewPostText(text);
+  let text =  getAreaValue.current.value;
+  let action = updateNewPostActionCreator(text);
+  props.dispatch(action);
 }
-
-
 
 return(
     <>
@@ -24,11 +25,11 @@ return(
       <div>Ava + description</div>
       <div>My post</div>
       <div>
-          <textarea value={newPostText} onChange={() => onPostChange()} ref={getAreaValue}></textarea>
-          <button onClick={() => addNewPost()}>Add post</button>
+          <textarea value={props.newPostText} onChange={() => onPostChange()} ref={getAreaValue}></textarea>
+          <button onClick={ addNewPost }>Add post</button>
       </div>
   </>  
     )
 }
-export default ProfileInfo;
+export default MyPosts;
    
